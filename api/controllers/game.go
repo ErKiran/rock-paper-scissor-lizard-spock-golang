@@ -34,7 +34,7 @@ const (
 	API_URL = "https://codechallenge.boohma.com/"
 	RANDOM  = "random"
 	WIN     = "win"
-	LOOSE   = "loose"
+	LOSE   = "lose"
 	TIE     = "tie"
 )
 
@@ -87,7 +87,7 @@ func (server *Server) Play(w http.ResponseWriter, r *http.Request) {
 	difference := int(math.Abs(float64(randomNumber)-float64(playerRequest.Player))) % 5
 
 	if difference == 1 || difference == 2 {
-		result = LOOSE
+		result = LOSE
 	}
 
 	if difference == 4 || difference == 3 {

@@ -16,6 +16,7 @@ func (server *Server) setJSON(path string, next func(http.ResponseWriter, *http.
 	server.Router.HandleFunc(path, middlewares.SetMiddlewareJSON(next)).Methods(method, "OPTIONS")
 }
 func (server *Server) initializeRoutes() {
+	server.Router.Use(middlewares.CORS)
 	server.setJSON("/health", server.Health, http.MethodGet)
 	server.setJSON("/choices", server.Choices, http.MethodGet)
 	server.setJSON("/choice", server.Choice, http.MethodGet)
